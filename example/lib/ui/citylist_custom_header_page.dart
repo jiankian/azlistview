@@ -14,6 +14,14 @@ class _CityListCustomHeaderPageState extends State<CityListCustomHeaderPage> {
   double susItemHeight = 36;
   String imgFavorite = Utils.getImgPath('ic_favorite');
 
+
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -60,7 +68,7 @@ class _CityListCustomHeaderPageState extends State<CityListCustomHeaderPage> {
             name: 'header',
             tagIndex: imgFavorite)); //index bar support local images.
 
-    setState(() {});
+    _updateSetState(() {});
   }
 
   Widget _buildHeader() {

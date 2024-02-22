@@ -14,6 +14,14 @@ class _ContactListPageState extends State<ContactListPage> {
   List<ContactInfo> _contacts = [];
   double susItemHeight = 40;
 
+
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -52,7 +60,7 @@ class _ContactListPageState extends State<ContactListPage> {
     // add header.
     _contacts.insert(0, ContactInfo(name: 'header', tagIndex: '↑'));
 
-    setState(() {});
+    _updateSetState(() {});
   }
 
   Widget _buildHeader() {

@@ -12,6 +12,13 @@ class _ContactsPageState extends State<ContactsPage> {
   List<ContactInfo> contactList = [];
   List<ContactInfo> topList = [];
 
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -70,7 +77,7 @@ class _ContactsPageState extends State<ContactsPage> {
     // add topList.
     contactList.insertAll(0, topList);
 
-    setState(() {});
+    _updateSetState(() {});
   }
 
   @override

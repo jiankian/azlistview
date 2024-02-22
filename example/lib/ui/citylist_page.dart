@@ -12,6 +12,14 @@ class _CityListPageState extends State<CityListPage> {
   List<CityModel> cityList = [];
   List<CityModel> _hotCityList = [];
 
+
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -63,7 +71,7 @@ class _CityListPageState extends State<CityListPage> {
     // show sus tag.
     SuspensionUtil.setShowSuspensionStatus(cityList);
 
-    setState(() {});
+    _updateSetState(() {});
   }
 
   Widget header() {

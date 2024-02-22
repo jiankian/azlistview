@@ -15,6 +15,14 @@ class _CarModelsPageState extends State<CarModelsPage> {
 
   double susItemHeight = 24;
 
+
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -54,7 +62,7 @@ class _CarModelsPageState extends State<CarModelsPage> {
     // add header.
     contactList.insert(0, ContactInfo(name: 'header', tagIndex: '选'));
 
-    setState(() {});
+    _updateSetState(() {});
   }
 
   Widget customHeader() {

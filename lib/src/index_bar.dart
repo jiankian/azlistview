@@ -277,6 +277,13 @@ class _IndexBarState extends State<IndexBar> {
   int selectIndex = 0;
   int action = IndexBarDragDetails.actionEnd;
 
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -305,7 +312,7 @@ class _IndexBarState extends State<IndexBar> {
       if (widget.options.ignoreDragCancel &&
           action == IndexBarDragDetails.actionCancel) {
       } else {
-        setState(() {});
+        _updateSetState(() {});
       }
     }
   }
@@ -447,7 +454,7 @@ class _IndexBarState extends State<IndexBar> {
   void _updateTagIndex(String tag) {
     if (_isActionDown()) return;
     selectIndex = widget.data.indexOf(tag);
-    setState(() {});
+    _updateSetState(() {});
   }
 
   @override

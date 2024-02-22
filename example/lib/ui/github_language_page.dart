@@ -26,6 +26,14 @@ class _GitHubLanguagePageState extends State<GitHubLanguagePage> {
 
   late TextEditingController textEditingController;
 
+
+  /// 更新当前组件状态
+  void _updateSetState(VoidCallback fn) {
+    if (mounted) {
+      setState(fn);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -56,7 +64,7 @@ class _GitHubLanguagePageState extends State<GitHubLanguagePage> {
   void _handleList(List<Languages> list) {
     dataList.clear();
     if (ObjectUtil.isEmpty(list)) {
-      setState(() {});
+      _updateSetState(() {});
       return;
     }
     dataList.addAll(list);
@@ -67,7 +75,7 @@ class _GitHubLanguagePageState extends State<GitHubLanguagePage> {
     // show sus tag.
     SuspensionUtil.setShowSuspensionStatus(dataList);
 
-    setState(() {});
+    _updateSetState(() {});
 
     if (itemScrollController.isAttached) {
       itemScrollController.jumpTo(index: 0);
